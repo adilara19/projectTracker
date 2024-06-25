@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input} from '@angular/core';
+import { Project } from '../models/project.model';
 
 @Component({
   selector: 'app-project-detail',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./project-detail.component.css']
 })
 export class ProjectDetailComponent {
-
+  @Input('currentProject') project: Project;
 }
