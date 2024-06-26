@@ -1,6 +1,9 @@
 <div class="card">
     <div class="card-body">
-        <h3 class="card-title">{{ project.name | titlecase }}</h3>
+        <h3 class="card-title">{{ project.name | titlecase }}
+            <span class="badge float-end rounded-pill bg-dark" [ngClass]="tasksFound ? 'show': 'hide'">Kalan Görev: {{incompletedTasksCount}}</span>
+        </h3>
+
         <!--Bu işaret '|' ve sonrasında vereceğimiz format ile bişeylerin düzeltilmesini sağlayabiliriz-->
         <p class="card-text">{{ project.description | titlecase}}</p>
         <p class="card-text">{{ project.startDate | date: 'dd MMMM yyyy'}}</p>
