@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../models/project.model'
 import { projects } from '../models/mocks/projects.mock'
 import { ActivatedRoute } from '@angular/router';
+import { ProjectsService } from '../services/projects.service';
 
 @Component({
   selector: 'app-project-list',
@@ -13,19 +14,22 @@ export class ProjectListComponent  implements OnInit{
   projects: Project[] = projects;
   word:string
 
-  constructor(private route: ActivatedRoute){
-
-  }
+  constructor(private route: ActivatedRoute, private projectService:ProjectsService){}
 
   ngOnInit(): void {
       this.route.params.subscribe((arg)=>{ 
+
+        let observableProjects = arg['id'] != undefined ?
+        this.projectService.getProjectByCategory(Number.parseInt(arg['id'])) : this.projectService.getProjects();
+
+        observableProjects.subscribe((data)=>{
+          this.projects = data;
+        })
+
+        console.log(arg['id']);
+        
         //ActivatedRoute parametresinin params koleksiyonundaki bir değişikliğin karşı taraftaki bileşende de değişmesini istiyorsak bunun adı: Observer
         // Birden fazla bileşenin koleksiyona abone olması durumunda bütün aboneler gerçekleşen değişikliklerden haberdar olurlar. Abone olma: Subscribe, Haberdar olmaları için giden bildirim: Notification
-        console.log(arg['id']);
-        if (arg['id'] != undefined){
-          let id : number = Number.parseInt(arg['id']);
-          this.projects = projects.filter(pr => pr.categoryID == id);
-        }
       })
   }
 }

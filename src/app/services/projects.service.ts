@@ -10,7 +10,7 @@ export class ProjectsService {
 
   constructor(private http: HttpClient) { }
 
-  url:'http://localhost:5263/api/Projects';
+  url: string = 'http://localhost:5263/api/Projects';
 
   getProjects():Observable<Project[]>{
     return this.http.get<Project[]>(this.url);
