@@ -29,7 +29,7 @@ export class AddProjectComponent implements OnInit{
       this.project = form.value;
       this.projectService.addProject(this.project)
                           .subscribe((incommingdata: Project)=>{
-                            console.log('$ {incommingData.name} başarıyla eklendi.')
+                            console.log('$ {incommingdata.name} başarıyla eklendi.')
                           })
     }
   }

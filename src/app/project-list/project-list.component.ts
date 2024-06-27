@@ -11,7 +11,7 @@ import { ProjectsService } from '../services/projects.service';
 })
 export class ProjectListComponent  implements OnInit{
 
-  projects: Project[] = projects;
+  projects: Project[];
   word:string
 
   constructor(private route: ActivatedRoute, private projectService:ProjectsService){}

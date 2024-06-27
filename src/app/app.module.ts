@@ -9,10 +9,10 @@ import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { SearchPipe } from './pipes/search.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProjectComponent } from './add-project/add-project.component';
-import { AddCategoryComponent } from './add-category/add-category.component'
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { AddCategoryComponent } from './add-category/add-category.component'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

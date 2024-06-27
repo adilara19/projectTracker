@@ -1,12 +1,18 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <input type="text" class="form-control" placeholder="Proje Adı" [(ngModel)] = "word">
+            <input type="text" class="form-control" placeholder="Proje Adı" [(ngModel)]="word">
         </div>
     </div>
-    <div class="row m-3" *ngFor="let project of projects | search : word">
-        <div class="col-12">
-            <app-project-detail [currentProject] = 'project'></app-project-detail>
+    <div *ngIf="projects!=undefined && projects.length>0; else warning ">
+        <div class="row m-3" *ngFor="let project of projects | search : word">
+            <div class="col-12">
+                <app-project-detail [currentProject]='project'></app-project-detail>
+            </div>
         </div>
     </div>
 </div>
+
+<ng-template #warning>
+    <span class="alert alert-danger form-control">API'den veri alınamıyor.</span>
+</ng-template>
