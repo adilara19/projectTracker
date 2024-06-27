@@ -1,0 +1,7 @@
+<div>
+    <h5>Giriş yapmak için lütfen kullanıcı adınızı ve şifrenizi giriniz.</h5>
+    <br>
+    <input type="text" #userName class="form-control" placeholder="Kullanıcı adı">
+    <input type="password" #pass class="form-control" placeholder="Şifre">
+    <button class="btn btn-primary" (click)="login(userName.value, pass.value)">Giriş</button>
+</div>
